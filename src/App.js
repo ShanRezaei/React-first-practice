@@ -16,6 +16,14 @@ const App = () => {
     setTodoList(newTodoList)
   }
 
+  function remove_item(i) {
+    const newTodoList =todoList.filter(function (j) {
+    return (j !== i);
+});
+setTodoList(newTodoList);
+        
+    }
+
   return (
     <div className='App'>
       <div className='addTask'>
@@ -27,7 +35,9 @@ const App = () => {
 
         <ul>
           {todoList.map((i)=>{
-          return <li>{i}</li>
+            //in react if we want to pass an argument to the function like the following 
+            //we should assign it to a function and could not do it on itself.
+          return <li className='list'>{todoList.indexOf(i)+1}-{i} <button onClick={()=>remove_item(i)}>Delete</button></li>
         })}
 
         </ul>
